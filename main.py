@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-
 FILE_NAME = "tasks_data.json"
 
 class Task:
@@ -105,13 +104,11 @@ def display_task(task):
         print(f"  Due: {task.due_date}")
     print(f"  Priority: {task.priority}  |  Status: {status}")
 
-# === GLOBAL VARIABLES ===
 tasks = load_tasks()
 next_id = max((t.task_id for t in tasks), default=0) + 1
 
-# === FUNCTIONS ===
 def add_task():
-    global next_id  # ✅ DECLARE FIRST — fixed!
+    global next_id
     display_header("ADD NEW TASK")
     title = input("  Task title: ").strip()
     if not title:
@@ -241,7 +238,6 @@ def mark_complete():
     else:
         print("  ⚠️ This task is already completed")
 
-# === MAIN PROGRAM ===
 if __name__ == "_main_":
     display_header("📋 DAILY TASK TO-DO LIST")
     print("   Welcome! Your tasks save automatically. ✅")
